@@ -75,6 +75,9 @@ geojson = dl.GeoJSON(id='free_libs', data = json.loads(gdf.to_json()),
                      hoverStyle=arrow_function(hover_style))
 
 app = dash.Dash()
+
+app.config.suppress_callback_exceptions = True
+
 app.layout = html.Div([
     dl.Map(children=[dl.TileLayer(), geojson],
            center=[-36.8485, 174.7633],
@@ -137,4 +140,4 @@ def filter_data_by_region(df, region):
 
 
 
-app.run_server(debug=True)
+app.run_server(debug=False)
